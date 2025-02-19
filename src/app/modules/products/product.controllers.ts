@@ -46,9 +46,32 @@ const getSingleProduct = async (req: Request, res: Response) => {
       message: 'Single product fetch successfully',
       data: result,
     });
-
   } catch (error) {
     let message = 'Something went wrong';
+    if (error instanceof Error) {
+      message = error.message;
+    }
+
+    res.status(500).json({
+      success: false,
+      message: message,
+    });
+  }
+};
+
+const updateSingleProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const data = req.body;
+    const result = await ProductService.updateSingleProductIntoDb(productId, data);
+
+    res.status(200).json({
+      success: true,
+      message: 'Product update successfully',
+      data: result,
+    });
+  } catch (error) {
+    let message = 'Can not update product data';
     if (error instanceof Error) {
       message = error.message;
     }
@@ -64,4 +87,5 @@ export const ProductController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  updateSingleProduct,
 };
