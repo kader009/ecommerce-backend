@@ -1,15 +1,14 @@
 import express from 'express';
-import cors from 'cors'
+import cors from 'cors';
 import { ProductRouter } from './app/modules/products/product.routes';
 const app = express();
 
-
 // middileware
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 // routes
-app.use('/api/v1/products', ProductRouter)
+app.use('/api/v1/products', ProductRouter);
 
 app.get('/', (req, res) => {
   res.send({

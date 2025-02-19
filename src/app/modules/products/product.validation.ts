@@ -6,8 +6,8 @@ const variantsValidationSchema = z.object({
 });
 
 const inventoryValidationSchema = z.object({
-  type: z.number(),
-  value: z.boolean(),
+  quantity: z.number(),
+  inStock: z.boolean(),
 });
 
 const ProductValidatoinSchema = z.object({
@@ -20,7 +20,7 @@ const ProductValidatoinSchema = z.object({
   category: z.string(),
   tags: z.array(z.string()),
   variants: z.array(variantsValidationSchema),
-  inventory: z.array(inventoryValidationSchema),
+  inventory: inventoryValidationSchema,
 });
 
 export default ProductValidatoinSchema;
