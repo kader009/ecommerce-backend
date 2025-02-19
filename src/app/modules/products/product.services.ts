@@ -6,9 +6,22 @@ const createProductIntoDb = async (productData: TProduct) => {
   return result;
 };
 
-const getAllProductIntoDb = async () => {
-  const result = await Product.find();
+const getAllProductIntoDb = async (searchTerm = '') => {
+  const query = searchTerm
+    ? { name: { $regex: searchTerm, $options: 'i' } }
+    : {};
+
+  const result = await Product.find(query);
   return result;
 };
 
-export const ProductService = { createProductIntoDb, getAllProductIntoDb };
+const getSingleProductIntoDb = async (productId: string) => {
+  const result = await Product.findById(productId);
+  return result;
+};
+
+export const ProductService = {
+  createProductIntoDb,
+  getAllProductIntoDb,
+  getSingleProductIntoDb,
+};
