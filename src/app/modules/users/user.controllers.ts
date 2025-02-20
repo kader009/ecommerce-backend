@@ -3,7 +3,7 @@ import { UserServices } from './user.services';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
 
-const JWT_secret = config.jwt_token;
+const JWT_secret = config.jwt_token || 'secret';
 
 const registerUser = async (req: Request, res: Response) => {
   const { email, password, role } = req.body;
