@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken'; 
 import config from '../config';
 import { NextFunction, Request, Response } from 'express';
 
@@ -34,3 +34,5 @@ const verifyToken = async (
     next();
   });
 };
+
+export default verifyToken;
