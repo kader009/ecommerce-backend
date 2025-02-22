@@ -14,7 +14,7 @@ const createOrder: RequestHandler = async (req, res) => {
         message: 'Validation error',
         errors: errorMessages,
       });
-      return; // ✅ Stop execution after sending response
+      return; 
     }
 
     const product = await Product.findById(zodParser.data.productId);
