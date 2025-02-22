@@ -72,6 +72,7 @@ const loginUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       message: 'User login failed',
+      error: error,
     });
   }
 };
