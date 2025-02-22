@@ -52,7 +52,7 @@ const loginUser = async (req: Request, res: Response) => {
 
     const isvalidPassword = await UserServices.ValidatePassword(
       password,
-      user?.password
+      user?.password,
     );
 
     if (!isvalidPassword) {
@@ -65,7 +65,7 @@ const loginUser = async (req: Request, res: Response) => {
     const token = jwt.sign(
       { email: user?.email, role: user?.role },
       JWT_secret,
-      { expiresIn: '1h' }
+      { expiresIn: '1h' },
     );
 
     res.status(200).json({ message: 'User logged in successfully', token });

@@ -6,7 +6,7 @@ const VariantSchema = new Schema<TVariant>(
     type: String,
     value: String,
   },
-  { _id: false }
+  { _id: false },
 );
 
 const InventorySchema = new Schema<TInventory>(
@@ -14,7 +14,7 @@ const InventorySchema = new Schema<TInventory>(
     quantity: Number,
     inStock: Boolean,
   },
-  { _id: false }
+  { _id: false },
 );
 
 const ProductSchema = new Schema<TProduct>({

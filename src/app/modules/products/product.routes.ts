@@ -13,7 +13,7 @@ router.delete(
   '/:productId',
   verifyToken,
   isAdmin,
-  ProductController.deleteSingleProduct
+  ProductController.deleteSingleProduct,
 );
 
 export const ProductRouter = router;

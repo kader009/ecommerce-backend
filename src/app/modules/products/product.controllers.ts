@@ -65,7 +65,7 @@ const updateSingleProduct = async (req: Request, res: Response) => {
     const data = req.body;
     const result = await ProductService.updateSingleProductIntoDb(
       productId,
-      data
+      data,
     );
 
     res.status(200).json({
@@ -96,7 +96,6 @@ const deleteSingleProduct = async (req: Request, res: Response) => {
       message: 'Product delete successfully',
       data: null,
     });
-    
   } catch (error) {
     let message = 'Can not delete product data';
     if (error instanceof Error) {

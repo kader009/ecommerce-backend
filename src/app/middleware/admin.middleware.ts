@@ -8,7 +8,7 @@ interface AuthenticatedRequest extends Request {
 export const isAdmin = (
   req: AuthenticatedRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   if (req.decoded && typeof req.decoded !== 'string') {
     const userRole = req.decoded.role;

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import globals from 'globals';
 
 import eslint from '@eslint/js';

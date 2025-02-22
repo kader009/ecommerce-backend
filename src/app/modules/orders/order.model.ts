@@ -14,7 +14,7 @@ const OrderSchema = new Schema<TOrder>({
     type: Number,
     required: true,
   },
-  price: { 
+  price: {
     type: Number,
     required: true,
   },

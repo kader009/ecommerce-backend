@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'; 
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../config';
 import { NextFunction, Request, Response } from 'express';
 
@@ -11,7 +11,7 @@ interface AuthenticatedRequest extends Request {
 const verifyToken = async (
   req: AuthenticatedRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const token = req?.headers?.authorization?.split(' ')[1];
 

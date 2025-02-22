@@ -8,13 +8,13 @@ const createOrder: RequestHandler = async (req, res) => {
     const zodParser = orderValidationSchema.safeParse(req.body);
 
     if (!zodParser.success) {
-      const errorMessages = zodParser.error.issues.map((err) => err.message);
+      const errorMessages = zodParser.error.issues.map(err => err.message);
       res.status(400).json({
         success: false,
         message: 'Validation error',
         errors: errorMessages,
       });
-      return; 
+      return;
     }
 
     const product = await Product.findById(zodParser.data.productId);
@@ -61,7 +61,7 @@ const createOrder: RequestHandler = async (req, res) => {
 
 const getAllOrder: RequestHandler = async (req, res) => {
   const email = req.query.email as string | undefined;
-  
+
   try {
     const order = await OrderService.getOrdersIntoDb(email);
 
