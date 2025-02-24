@@ -7,8 +7,8 @@ import userValidation from './user.validation';
 const JWT_secret = config.jwt_token as string;
 
 const registerUser = async (req: Request, res: Response) => {
-  const uservalideData = userValidation.omit({_id:true}).parse(req.body)
-  const { email, password, role } = req.body;
+  const uservalideData = userValidation.omit({ _id: true }).parse(req.body);
+  const { email, password, role } = uservalideData;
   try {
     const existUser = await UserServices.registerUser(email);
 
