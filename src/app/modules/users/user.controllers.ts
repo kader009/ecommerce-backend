@@ -2,10 +2,12 @@ import { Request, Response } from 'express';
 import { UserServices } from './user.services';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
+import userValidation from './user.validation';
 
 const JWT_secret = config.jwt_token as string;
 
 const registerUser = async (req: Request, res: Response) => {
+  const uservalideData = userValidation.omit({_id:true}).parse(req.body)
   const { email, password, role } = req.body;
   try {
     const existUser = await UserServices.registerUser(email);
@@ -19,7 +21,7 @@ const registerUser = async (req: Request, res: Response) => {
 
     const userRole = role || 'user';
 
-    const user = await UserServices.createUser(email, password, role);
+    const user = await UserServices.createUser(email, password, userRole);
     res.status(200).json({
       message: 'User created successfully',
       user,
