@@ -8,6 +8,6 @@ const userValidation = z.object({
     .string()
     .min(6, { message: 'Password must be at least 6 characters long' }),
   role: z.string().nonempty({ message: 'Role is required' }),
-});
+}); 
 
 export default userValidation;

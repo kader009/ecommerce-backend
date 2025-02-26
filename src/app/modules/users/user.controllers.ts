@@ -3,6 +3,7 @@ import { UserServices } from './user.services';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
 import userValidation from './user.validation';
+import { z } from 'zod';
 
 const JWT_secret = config.jwt_token as string;
 
@@ -22,19 +23,24 @@ const registerUser = async (req: Request, res: Response) => {
     const userRole = role || 'user';
 
     const user = await UserServices.createUser(email, password, userRole);
+    
     res.status(200).json({
       message: 'User created successfully',
       user,
     });
   } catch (error) {
-    let message = 'Something went wrong';
-    if (error instanceof Error) {
-      message = error.message;
+    // let message = 'Something went wrong';
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        errors: error.errors, // Zod error details পাঠানো
+      });
     }
 
     res.status(500).json({
       success: false,
-      message: message,
+      message: 'Something went wrong',
+      error: error instanceof Error ? error.message : error,
     });
   }
 };
