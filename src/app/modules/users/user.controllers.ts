@@ -33,7 +33,7 @@ const registerUser = async (req: Request, res: Response) => {
     if (error instanceof z.ZodError) {
       return res.status(400).json({
         success: false,
-        errors: error.errors, // Zod error details পাঠানো
+        errors: error.errors, 
       });
     }
 
