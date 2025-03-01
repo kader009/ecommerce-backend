@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express'; 
 
-/**
+/** 
  * Error handling middleware.
  *
  * @param {Error} err - The error object.
  * @param {Request} req - The request object.
- * @param {Response} res - The response object.
+ * @param {Response} res - The response object. 
  */
 
 export const errorHandler = (
