@@ -16,7 +16,7 @@ interface CustomError extends Partial<MongooseValidationError>, Partial<Mongoose
   statusCode?: number;
 }
 
-const globalErrorHandler: ErrorRequestHandler = (err: CustomError, req, res, next) => {
+const globalErrorHandler: ErrorRequestHandler = (err: CustomError, req, res, next) => { 
   let statusCode: number = err.statusCode || 500;
   let message: string = err.message || 'Something went wrong!';
   let errorSources: TErrorSources = [];
